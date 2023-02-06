@@ -1,7 +1,11 @@
 [package]
 name = "socket_addr_macros"
 version = "1.0.0"
+description = "Check and parse SocketAddr at compile-time"
 edition = "2021"
+keywords = ["macro", "network"]
+license = "MIT"
+repository = "https://github.com/hiraginoyuki/socket_addr_macros"
 
 [lib]
 proc-macro = true
