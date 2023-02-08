@@ -7,6 +7,23 @@
 //! [`socket_addr!`]: ./macro.socket_addr.html
 //! [`socket_addr_dyn!`]: ./macro.socket_addr_dyn.html
 //! [The Rust Standard Library documentation]: https://doc.rust-lang.org/stable/std/net/struct.TcpListener.html#examples
+//!
+//! # Example
+//!
+//! ```no_run
+//! use socket_addr_macros::socket_addr;
+//!
+//! use std::io::Write;
+//! use std::net::TcpListener;
+//!
+//! fn main() {
+//!     let listener = TcpListener::bind(socket_addr!(127.0.0.1:8080)).unwrap();
+//!
+//!     while let Ok((mut conn, _)) = listener.accept() {
+//!         conn.write(b"hello").unwrap();
+//!     }
+//! }
+//! ```
 
 pub(crate) mod ext;
 use ext::*;
