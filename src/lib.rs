@@ -19,6 +19,9 @@ use std::net::SocketAddr;
 /// Parses an IPv4 or IPv6 address at compile-time and returns a [`SocketAddr`].
 ///
 /// [`SocketAddr`]: std::net::SocketAddr
+///
+/// # Examples
+///
 /// ```
 #[doc = concat!("use ", module_path!(), "::socket_addr;")]
 /// use std::net::{SocketAddr, Ipv4Addr, Ipv6Addr};
@@ -51,6 +54,9 @@ pub fn socket_addr(input: TokenStream) -> TokenStream {
 ///
 /// [`SocketAddrV4`]: std::net::SocketAddrV4
 /// [`SocketAddrV6`]: std::net::SocketAddrV6
+///
+/// # Examples
+///
 /// ```
 #[doc = concat!("use ", module_path!(), "::socket_addr_dyn;")]
 /// use std::net::{SocketAddrV4, SocketAddrV6, Ipv4Addr, Ipv6Addr};
