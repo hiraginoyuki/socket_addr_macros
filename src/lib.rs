@@ -7,6 +7,23 @@
 //! [`socket_addr!`]: ./macro.socket_addr.html
 //! [`socket_addr_dyn!`]: ./macro.socket_addr_dyn.html
 //! [The Rust Standard Library documentation]: https://doc.rust-lang.org/stable/std/net/struct.TcpListener.html#examples
+//!
+//! # Example
+//!
+//! ```no_run
+//! use socket_addr_macros::socket_addr;
+//!
+//! use std::io::Write;
+//! use std::net::TcpListener;
+//!
+//! fn main() {
+//!     let listener = TcpListener::bind(socket_addr!(127.0.0.1:8080)).unwrap();
+//!
+//!     while let Ok((mut conn, _)) = listener.accept() {
+//!         conn.write(b"hello").unwrap();
+//!     }
+//! }
+//! ```
 
 pub(crate) mod ext;
 use ext::*;
@@ -19,6 +36,9 @@ use std::net::SocketAddr;
 /// Parses an IPv4 or IPv6 address at compile-time and returns a [`SocketAddr`].
 ///
 /// [`SocketAddr`]: std::net::SocketAddr
+///
+/// # Examples
+///
 /// ```
 #[doc = concat!("use ", module_path!(), "::socket_addr;")]
 /// use std::net::{SocketAddr, Ipv4Addr, Ipv6Addr};
@@ -51,6 +71,9 @@ pub fn socket_addr(input: TokenStream) -> TokenStream {
 ///
 /// [`SocketAddrV4`]: std::net::SocketAddrV4
 /// [`SocketAddrV6`]: std::net::SocketAddrV6
+///
+/// # Examples
+///
 /// ```
 #[doc = concat!("use ", module_path!(), "::socket_addr_dyn;")]
 /// use std::net::{SocketAddrV4, SocketAddrV6, Ipv4Addr, Ipv6Addr};
