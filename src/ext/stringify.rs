@@ -33,15 +33,15 @@ impl Stringify for Group {
 }
 
 macro_rules! impl_stringify {
-    ($struct:ident) => {
-        impl Stringify for $struct {
-            fn stringify(self) -> String {
-                self.to_string()
+    ($($target:ident),* $(,)?) => {
+        $(
+            impl Stringify for $target {
+                fn stringify(self) -> String {
+                    self.to_string()
+                }
             }
-        }
-    };
+        )*
+    }
 }
 
-impl_stringify!(Ident);
-impl_stringify!(Punct);
-impl_stringify!(Literal);
+impl_stringify!(Ident, Punct, Literal);
